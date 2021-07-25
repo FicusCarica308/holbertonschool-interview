@@ -6,11 +6,10 @@
 def canUnlockAll(boxes):
     """ Function that unlocks a list of locked boxes"""
     keys = [0]
-    for contents in boxes:
-        for key in contents:
-            if key not in keys:
-                keys.append(key)
-    print(keys)
+    for key in keys:
+        for box in boxes[key]:
+            if box not in keys:
+                keys.append(box)
     if len(keys) != len(boxes):
         return False
     return True

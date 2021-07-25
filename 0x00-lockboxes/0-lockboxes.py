@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 """
+File contents:
+    def canUnlockAll(boxes):
+        > function that unlocks all locked boxes from a given list
 """
 
 

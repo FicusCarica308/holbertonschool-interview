@@ -5,7 +5,7 @@
 * This repository contains directorys named afyer given projects assigned by the holbertonschool curriculum.
 * Each one contains a single or multiple practice interview question that I was or currently tasked with solving
 
-## Directorys:
+## Directories:
 * 0x00-lockboxes - This directory contains files solving a problem named Lockboxes (More in README in directory)
 
 ## Authors

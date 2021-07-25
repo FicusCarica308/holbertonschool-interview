@@ -8,6 +8,8 @@ File contents:
 
 def canUnlockAll(boxes):
     """ Function that unlocks a list of locked boxes"""
+    if boxes is None or len(boxes) == 0:
+        return False
     keys = [0]
     for key in keys:
         for box in boxes[key]:

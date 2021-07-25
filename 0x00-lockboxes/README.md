@@ -1,7 +1,7 @@
 # 0x00-lockboxes
 ![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.holbertonschool.com%2Fholberton-logo-simple.png&f=1&nofb=1)
 
-#### Description:
+# Description:
 This project directory contains various practice interview solutions provided by the holbertonschool Curriculum
 
 ## Files:

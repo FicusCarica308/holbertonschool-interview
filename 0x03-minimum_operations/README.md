@@ -9,7 +9,7 @@
 * In a text file, there is a single character H. Your text editor can execute only two operations in this file: Copy All and Paste. Given a number n, write a method that calculates the fewest number of operations needed to result in exactly n H characters in the file.
 
 ### Files:
-* To be
+* 0-minoperations.py - contains a function defintion that acts as a solutions to the problem above
 
 ### Authors
 Manuel Enrique Figueroa - [Github](https://github.com/FicusCarica308)

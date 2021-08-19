@@ -3,6 +3,7 @@
 /**
 * unstable_check - checks if a given sandpile is unstable
 * @grid: checks if a given sandpile is stable
+* @grid_size: the size of the given grid
 * Return: returns 1 if stable and 0 if unstable
 */
 int unstable_check(int grid[3][3], unsigned int grid_size)
@@ -19,6 +20,11 @@ int unstable_check(int grid[3][3], unsigned int grid_size)
 	return (1);
 }
 
+
+/**
+* print_grid - prints out a given sandpile grid
+* @grid: the given grid
+*/
 static void print_grid(int grid[3][3])
 {
 	int i, j;
@@ -36,8 +42,9 @@ static void print_grid(int grid[3][3])
 }
 
 /**
-*
-*
+* check_print - checks if a given sandpile grid is unstable before printing
+* @grid: given sandpile grid
+* @grid_size: The size of the given grid
 */
 void check_print(int grid[3][3], unsigned int grid_size)
 {

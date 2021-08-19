@@ -1,9 +1,8 @@
 #include "sandpiles.h"
 
-
 /**
 * unstable_check - checks if a given sandpile is unstable
-* @grid: 
+* @grid: checks if a given sandpile is stable
 * Return: returns 1 if stable and 0 if unstable
 */
 int unstable_check(int grid[3][3], unsigned int grid_size)
@@ -15,25 +14,38 @@ int unstable_check(int grid[3][3], unsigned int grid_size)
 		for (column = 0; column <= grid_size; column++)
 			if (grid[row][column] > 3)
 			{
-                return (0);
+				return (0);
 			}
 	return (1);
 }
 
 static void print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+/**
+*
+*
+*/
+void check_print(int grid[3][3], unsigned int grid_size)
+{
+	if (unstable_check(grid, grid_size) == 0)
+	{
+		printf("=\n");
+		print_grid(grid);
+	}
 }
 
 /**
@@ -44,21 +56,14 @@ static void print_grid(int grid[3][3])
 */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	unsigned int grid_size = 2;
-	unsigned int check_unstable = 0;
-	unsigned int row = 0;
-	unsigned int column = 0;
+	unsigned int grid_size = 2, check_unstable = 0, row = 0, column = 0;
 	int grid_hold[3][3];
- 
+
 	/* add operations */
 	for (row = 0; row <= grid_size; row++)
 		for (column = 0; column <= grid_size; column++)
 			grid1[row][column] = grid1[row][column] + grid2[row][column];
-	if (unstable_check(grid1, grid_size) == 0)
-		{
-			printf("=\n");
-			print_grid(grid1);
-		}
+	check_print(grid1, grid_size);
 
 	while (1)
 	{
@@ -83,15 +88,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 				}
 		if (check_unstable == 0)
 			return;
-		else
-		{
-			if (unstable_check(grid1, grid_size) == 0)
-			{
-				printf("=\n");
-				print_grid(grid1);
-			}
-		}
+		check_print(grid1, grid_size);
 	}
-
-	return;
 }

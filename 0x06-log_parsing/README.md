@@ -9,7 +9,7 @@
 * a script that reads stdin line by line and computes metrics
 
 ### Files:
-* 0-stats.py - A script that accepts input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>\
+* 0-stats.py - A script that accepts input format: '<IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>'\
     and prints the total file size for every ten lines passed. In addition the program will print how many of each status code\
     (200, 401, 403, etc) were found in those ten lines. If the program reaches a keyboard interupt it will print however many lines\
     passed before interuption.

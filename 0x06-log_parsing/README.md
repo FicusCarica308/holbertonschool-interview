@@ -14,7 +14,7 @@
     If the program reaches a keyboard interupt it will print however many lines passed before interuption.
 
 Format:
-<IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+" (IP ADDRESS) - [(DATE)] "(GET /projects/260 HTTP/1.1)" (STATUS CODE) (FILE SIZE) "
 
 ### Authors
 Manuel Enrique Figueroa - [Github](https://github.com/FicusCarica308)

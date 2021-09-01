@@ -11,7 +11,7 @@ from signal import signal, SIGINT
 def print_metrics(total_file_size, http_code_track):
     """ Temp comment"""
     # prints metrics every 10 lines
-    print('File size:', total_file_size)
+    print('File size: ', total_file_size)
     for key, value in http_code_track.items():
         print("{}:{}".format(key, value))
 

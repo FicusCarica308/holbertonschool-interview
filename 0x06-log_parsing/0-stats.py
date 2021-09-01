@@ -4,6 +4,7 @@
 
 from sys import stdin
 
+
 def print_metrics(total_file_size, http_code_track):
     """ Temp comment"""
     # prints metrics every 10 lines
@@ -12,11 +13,12 @@ def print_metrics(total_file_size, http_code_track):
         if (value != 0):
             print("{}: {}".format(key, value))
 
+
 if __name__ == "__main__":
     """ Temp comment"""
     # will be used to determine if ten lines has been processed
     http_code_track = {"200": 0, "301": 0, "400": 0, "401": 0,
-                    "403": 0, "404": 0, "405": 0, "500": 0}
+                       "403": 0, "404": 0, "405": 0, "500": 0}
     line_count = 0
     total_file_size = 0
     # loops through stdin given to program

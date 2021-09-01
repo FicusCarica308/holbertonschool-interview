@@ -4,20 +4,23 @@ from ipaddress import ip_address
 from datetime import datetime
 import re
 from signal import signal, SIGINT
-""" """
+""" Temp comment"""
 
 def print_metrics(total_file_size, http_code_track):
+    """ Temp comment"""
     # prints metrics every 10 lines
     print('File size:', total_file_size)
     for key, value in http_code_track.items():
         print("{}:{}".format(key, value))
 
 def handler(signal_recieved, frame):
+    """ Temp comment"""
     total_file_size = 3000
     http_code_track = {}
     print_metrics(total_file_size, http_code_track)
 
 def check_arguments(arguments):
+    """ Temp comment"""
     ip_rgx1 = "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
     ip_rgx2 = "(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"
     date_format = "[%Y-%m-%d_%X.%f]"
@@ -51,6 +54,7 @@ def check_arguments(arguments):
 
 
 def get_arguments(line):
+    """ Temp comment"""
     new_line = str()
     space_count = 0
     for char in line:
@@ -65,6 +69,7 @@ def get_arguments(line):
     return new_line.split(' ')
 
 if __name__ == "__main__":
+    """ Temp comment"""
     # will be used to determine if ten lines has been processed
     http_code_track = {"200": 0, "301": 0, "400": 0, "401": 0,
                 "403": 0, "404": 0, "405": 0, "500": 0}

@@ -9,7 +9,8 @@ def print_metrics(total_file_size, http_code_track):
     # prints metrics every 10 lines
     print("File size: {}".format(total_file_size))
     for key, value in http_code_track.items():
-        print("{}: {}".format(key, value))
+        if (value != 0):
+            print("{}: {}".format(key, value))
 
 if __name__ == "__main__":
     """ Temp comment"""
@@ -23,7 +24,10 @@ if __name__ == "__main__":
         if (line_count == 10):
             print_metrics(total_file_size, http_code_track)
             line_count = 0
-        arguments = line.split(' ')
-        http_code_track[arguments[7]] += 1
-        total_file_size += int(arguments[8])
-        line_count += 1
+        try:
+            arguments = line.split(' ')
+            http_code_track[arguments[7]] += 1
+            total_file_size += int(arguments[8])
+            line_count += 1
+        except Exception:
+            continue

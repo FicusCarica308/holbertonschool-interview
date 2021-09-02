@@ -8,11 +8,11 @@ from sys import stdin
 def print_metrics(metrics):
     """ Temp comment"""
     # prints metrics every 10 lines
-    for key, value in metrics.items():
-        if (key == 'total_size'):
-            print("File size: {}".format(value))
-        elif (value != 0):
-            print("{}: {}".format(key, value))
+    codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    print("File size: {}".format(metrics['total_size']))
+    for code in codes:
+        if (metrics[code] > 0):
+            print("{}: {}".format(code, metrics[code]))
 
 if __name__ == "__main__":
     """ Temp comment"""

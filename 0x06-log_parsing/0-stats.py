@@ -18,7 +18,7 @@ metrics = {200: 0, 301: 0, 400: 0, 401: 0,
 line_count = 0
 total_size = 0
 try:
-    for line in stdin:
+    for line in sys.stdin:
         try:
             line_count += 1
             arguments = line.split()

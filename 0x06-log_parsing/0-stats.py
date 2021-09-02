@@ -10,7 +10,6 @@ def print_metrics(metrics):
              "403", "404", "405", "500"]
     print("File size: {}".format(metrics['total_size']))
     for code in codes:
-        print(code)
         if (metrics[code] > 0):
             print("{}: {}".format(code, metrics[code]))
 

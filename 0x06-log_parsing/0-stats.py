@@ -9,9 +9,9 @@ def print_metrics(metrics, total_size):
     codes = ["200", "301", "400", "401",
              "403", "404", "405", "500"]
     print("File size: {}".format(total_size))
-        for code in codes:
-            if (metrics[code] > 0):
-                print("{}: {}".format(code, metrics[code]))
+    for code in codes:
+        if (metrics[code] > 0):
+            print("{}: {}".format(code, metrics[code]))
 
 
 # will be used to determine if ten lines has been processed

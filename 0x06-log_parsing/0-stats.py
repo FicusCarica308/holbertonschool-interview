@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 print_metrics(metrics)
                 line_count = 0
             try:
-                arguments = line.split(' ')
+                arguments = line.split()
                 metrics[arguments[-2]] += 1
                 metrics['total_size'] += int(arguments[-1])
                 line_count += 1

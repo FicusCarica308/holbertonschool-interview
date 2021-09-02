@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Temp comment"""
-from sys import stdin
+import sys
 
 
 def print_metrics(metrics, total_size):
@@ -21,7 +21,7 @@ line_count = 0
 total_size = 0
 # loops through stdin given to program
 try:
-    for line in stdin:
+    for line in sys.stdin:
         try:
             arguments = line.split()
             metrics[arguments[-2]] += 1

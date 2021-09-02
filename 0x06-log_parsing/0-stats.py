@@ -10,7 +10,7 @@ def print_metrics(metrics, total_size):
              "403", "404", "405", "500"]
     print("File size: {}".format(total_size))
     for code in codes:
-        if (metrics[code] > 0):
+        if metrics[code] > 0:
             print("{}: {}".format(code, metrics[code]))
 
 
@@ -27,7 +27,7 @@ try:
             arguments = line.split()
             metrics[arguments[-2]] += 1
             total_size += int(arguments[-1])
-            if (line_count == 10):
+            if line_count == 10:
                 print_metrics(metrics, total_size)
                 line_count = 0
         except Exception:

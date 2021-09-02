@@ -23,9 +23,6 @@ if __name__ == "__main__":
     # loops through stdin given to program
     try:
         for line in stdin:
-            if (line_count == 9):
-                print_metrics(metrics)
-                line_count = 0
             try:
                 arguments = line.split()
                 metrics[arguments[-2]] += 1
@@ -33,6 +30,9 @@ if __name__ == "__main__":
                 line_count += 1
             except:
                 continue
+            if (line_count == 10):
+                print_metrics(metrics)
+                line_count = 0
     except:
         pass
     finally:

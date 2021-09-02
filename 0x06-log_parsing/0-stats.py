@@ -23,7 +23,6 @@ if __name__ == "__main__":
     # loops through stdin given to program
     try:
         for line in stdin:
-            print(line)
             if (line_count == 9):
                 print_metrics(metrics)
                 line_count = 0

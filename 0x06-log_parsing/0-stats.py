@@ -27,11 +27,11 @@ try:
             arguments = line.split()
             metrics[arguments[-2]] += 1
             total_size += int(arguments[-1])
+            if (line_count == 10):
+                print_metrics(metrics, total_size)
+                line_count = 0
         except Exception:
             continue
-        if (line_count == 10):
-            print_metrics(metrics, total_size)
-            line_count = 0
 except Exception:
     pass
 finally:

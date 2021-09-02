@@ -31,9 +31,9 @@ if __name__ == "__main__":
                 metrics[arguments[-2]] += 1
                 metrics['total_size'] += int(arguments[-1])
                 line_count += 1
-            except:
+            except Exception:
                 continue
-    except:
+    except Exception:
         pass
     finally:
         print_metrics(metrics)

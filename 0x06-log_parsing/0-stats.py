@@ -5,6 +5,15 @@
 from sys import stdin
 
 
+def print_metrics(metrics):
+    """ Temp comment"""
+    # prints metrics every 10 lines
+    for key, value in metrics.items():
+        if (key == 'total_size'):
+            print("File size: {}".format(value))
+        elif (value != 0):
+            print("{}: {}".format(key, value))
+
 if __name__ == "__main__":
     """ Temp comment"""
     # will be used to determine if ten lines has been processed
@@ -15,11 +24,7 @@ if __name__ == "__main__":
     try:
         for line in stdin:
             if (line_count == 10):
-                for key, value in metrics.items():
-                    if (key == 'total_size'):
-                        print("File size: {}".format(value))
-                    elif (value != 0):
-                        print("{}: {}".format(key, value))
+                print_metrics(metrics)
                 line_count = 0
             try:
                 arguments = line.split()
@@ -31,8 +36,4 @@ if __name__ == "__main__":
     except:
         pass
     finally:
-        for key, value in metrics.items():
-            if (key == 'total_size'):
-                print("File size: {}".format(value))
-            elif (value != 0):
-                print("{}: {}".format(key, value))
+        print_metrics(metrics)

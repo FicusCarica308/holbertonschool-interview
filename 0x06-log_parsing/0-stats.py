@@ -35,7 +35,6 @@ try:
         if (line_count == 10):
             print_metrics(metrics, total_size)
             line_count = 0
-    print_metrics(metrics, total_size)
 except Exception:
     pass
 finally:

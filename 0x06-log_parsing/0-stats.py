@@ -23,7 +23,8 @@ if __name__ == "__main__":
     # loops through stdin given to program
     try:
         for line in stdin:
-            if (line_count == 10):
+            print(line)
+            if (line_count == 9):
                 print_metrics(metrics)
                 line_count = 0
             try:
@@ -31,9 +32,9 @@ if __name__ == "__main__":
                 metrics[arguments[-2]] += 1
                 metrics['total_size'] += int(arguments[-1])
                 line_count += 1
-            except Exception:
+            except:
                 continue
-    except Exception:
+    except:
         pass
     finally:
         print_metrics(metrics)

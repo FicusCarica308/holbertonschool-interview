@@ -9,12 +9,9 @@ def print_metrics(metrics, total_size):
     codes = ["200", "301", "400", "401",
              "403", "404", "405", "500"]
     print("File size: {}".format(total_size))
-    try:
-        for code in codes:
-            if (metrics[code] > 0):
-                print("{}: {}".format(code, metrics[code]))
-    except Exception:
-        pass
+    for code in codes:
+        if (metrics[code] > 0):
+            print("{}: {}".format(code, metrics[code]))
 
 
 # will be used to determine if ten lines has been processed
@@ -26,10 +23,10 @@ total_size = 0
 try:
     for line in stdin:
         try:
+            line_count += 1
             arguments = line.split()
             metrics[arguments[-2]] += 1
             total_size += int(arguments[-1])
-            line_count += 1
         except Exception:
             continue
         if (line_count == 10):

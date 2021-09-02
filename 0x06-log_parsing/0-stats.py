@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """ Temp comment"""
-
-
 from sys import stdin
 
 

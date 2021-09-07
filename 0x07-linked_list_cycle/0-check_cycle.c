@@ -18,6 +18,8 @@ int check_cycle(listint_t *list)
 	while (norm_node != NULL && ahead_node != NULL)
 	{
 		norm_node = norm_node->next;
+		if (ahead_node->next == NULL)
+			return (0);
 		ahead_node = ahead_node->next->next;
 		if (norm_node == ahead_node)
 			return (1);

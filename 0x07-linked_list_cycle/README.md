@@ -4,7 +4,6 @@
 # holberton school interview preperation project:
 ## 
 0x07-linked_list_cycle
-### Learning objectives:
 ## Solving this problem::
 * a C program that checks whether or not a singly linked list is a cycle
 

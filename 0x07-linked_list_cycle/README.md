@@ -9,10 +9,8 @@
 * a C program that checks whether or not a singly linked list is a cycle
 
 ### Files:
-* check_cycle.c - file containing function that solves the above problem 
-
-Format:
-" (IP ADDRESS) - [(DATE)] "(GET /projects/260 HTTP/1.1)" (STATUS CODE) (FILE SIZE) "
+* check_cycle.c - file containing function that solves the above problem
+* lists.h - linked list header file containing helpful linked list functions
 
 ### Authors
 Manuel Enrique Figueroa - [Github](https://github.com/FicusCarica308)

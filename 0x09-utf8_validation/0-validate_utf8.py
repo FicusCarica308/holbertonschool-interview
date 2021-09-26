@@ -18,17 +18,15 @@ def validUTF8(data):
     
     for dataPoint in data:
         binaryDataPoint = ""
-        binarySub = 128
-        if dataPoint > 255:
-            return (False)
-        for i in range(1, 6):
-            if dataPoint - binarySub >= 0:
-                dataPoint -= binarySub
-                binaryDataPoint += "1"
-            else:
+        for i in range(1, 33):
+            if (dataPoint % 2 == 0):
                 binaryDataPoint += "0"
-            binarySub /= 2
-        binaryData.append(binaryDataPoint)
+            else:
+                binaryDataPoint += "1"
+            dataPoint = dataPoint // 2
+        binaryData.append(binaryDataPoint[:8][::-1][:5])
+        if dataPoint != 0:
+            return (False)
 
     """Checks binary data"""
     i = 0

@@ -29,12 +29,7 @@ int slide_line(int *line, size_t size, int direction)
 			{
 				if (line[k] != line[i] && line[k] != 0)
 					break;
-				if (line[k] == line[i])
-				{
-					line[k] = line[i] * 2;
-					line[i] = line[k];
-					line[k] = 0;
-				}
+				shift_index(line, i, k);
 			}
 			j = i;
 			while (j != index_max)
@@ -57,12 +52,7 @@ int slide_line(int *line, size_t size, int direction)
 			{
 				if (line[k] != line[i] && line[k] != 0)
 					break;
-				if (line[k] == line[i])
-				{
-					line[k] = line[i] * 2;
-					line[i] = line[k];
-					line[k] = 0;
-				}
+				shift_index(line, i, k);
 			}
 
 			j = i;

@@ -1,7 +1,9 @@
 #include "slide_line.h"
 /**
-* 
-*
+* shift_index - shifts two index's directly from slide_line
+* @line: The line we are shifting the index of
+* @i: An iteratoring value representing the outer for loop
+* @k: An iteratoring value representing the inner for loop
 */
 void shift_index(int *line, int i, int k)
 {
@@ -14,8 +16,11 @@ void shift_index(int *line, int i, int k)
 }
 
 /**
-*
-*
+* slide_line - emulates single line 2048
+* @line: a line passed to the function to be slid and merged
+* @size: The size of the given line
+* @direction: What direction the user is telling the program to move to
+* Return: returns 1 upon success, or 0 upon failure
 */
 int slide_line(int *line, size_t size, int direction)
 {

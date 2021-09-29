@@ -31,16 +31,12 @@ int slide_line(int *line, size_t size, int direction)
 					break;
 				shift_index(line, i, k);
 			}
-			j = i;
-			while (j != index_max)
-			{
+			for (j = i; j != index_max; j++)
 				if (line[j + 1] == 0)
 				{
 					line[j + 1] = line[j];
 					line[j] = 0;
 				}
-				j++;
-			}
 		}
 		return (1);
 	}
@@ -54,17 +50,12 @@ int slide_line(int *line, size_t size, int direction)
 					break;
 				shift_index(line, i, k);
 			}
-
-			j = i;
-			while (j != 0)
-			{
+			for (j = i; j != 0; j--)
 				if (line[j - 1] == 0)
 				{
 					line[j - 1] = line[j];
 					line[j] = 0;
 				}
-				j--;
-			}
 		}
 		return (1);
 	}

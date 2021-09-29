@@ -2,16 +2,16 @@
 /**
 * shift_index - shifts two index's directly from slide_line
 * @line: The line we are shifting the index of
-* @i: An iteratoring value representing the outer for loop
-* @k: An iteratoring value representing the inner for loop
+* @slow_index: An iteratoring value representing the outer for loop
+* @fast_index: An iteratoring value representing the inner for loop
 */
-void shift_index(int *line, int i, int k)
+void shift_index(int *line, int slow_index, int fast_index)
 {
-	if (line[k] == line[i])
+	if (line[fast_index] == line[slow_index])
 	{
-		line[k] = line[i] * 2;
-		line[i] = line[k];
-		line[k] = 0;
+		line[fast_index] = line[slow_index] * 2;
+		line[slow_index] = line[fast_index];
+		line[fast_index] = 0;
 	}
 }
 
@@ -24,38 +24,40 @@ void shift_index(int *line, int i, int k)
 */
 int slide_line(int *line, size_t size, int direction)
 {
-	int i = 0, k = 0, j = 0, index_max = size - 1;
+	int slow_index = 0, fast_index = 0, iterator = 0, index_max = size - 1;
 
 	if (direction == SLIDE_RIGHT)
-		for (i = index_max; i >= 0; i--)
+		/*start at the end of the given line*/
+		for (slow_index = index_max; slow_index >= 0; slow_index--)
 		{
-			for (k = i - 1; k >= 0; k--)
+			for (fast_index = slow_index - 1; fast_index >= 0; fast_index--)
 			{
-				if (line[k] != line[i] && line[k] != 0)
+				if (line[fast_index] != line[slow_index] && line[fast_index] != 0)
 					break;
-				shift_index(line, i, k);
+				shift_index(line, slow_index, fast_index);
 			}
-			for (j = i; j != index_max; j++)
-				if (line[j + 1] == 0)
+			for (iterator = slow_index; iterator != index_max; iterator++)
+				if (line[iterator + 1] == 0)
 				{
-					line[j + 1] = line[j];
-					line[j] = 0;
+					line[iterator + 1] = line[iterator];
+					line[iterator] = 0;
 				}
 		}
 	else if (direction == SLIDE_LEFT)
-		for (i = 0; i <= index_max; i++)
+		/*starts at the beginning of the given line*/
+		for (slow_index = 0; slow_index <= index_max; slow_index++)
 		{
-			for (k = i + 1; k <= index_max; k++)
+			for (fast_index = slow_index + 1; fast_index <= index_max; fast_index++)
 			{
-				if (line[k] != line[i] && line[k] != 0)
+				if (line[fast_index] != line[slow_index] && line[fast_index] != 0)
 					break;
-				shift_index(line, i, k);
+				shift_index(line, slow_index, fast_index);
 			}
-			for (j = i; j != 0; j--)
-				if (line[j - 1] == 0)
+			for (iterator = slow_index; iterator != 0; iterator--)
+				if (line[iterator - 1] == 0)
 				{
-					line[j - 1] = line[j];
-					line[j] = 0;
+					line[iterator - 1] = line[iterator];
+					line[iterator] = 0;
 				}
 		}
 	else

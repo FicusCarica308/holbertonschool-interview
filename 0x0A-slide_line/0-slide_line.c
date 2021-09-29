@@ -1,7 +1,4 @@
 #include "slide_line.h"
-
-#define INNTER_LOOP ()
-
 /**
 * 
 *
@@ -32,7 +29,12 @@ int slide_line(int *line, size_t size, int direction)
 			{
 				if (line[k] != line[i] && line[k] != 0)
 					break;
-				shift_index(&line, i, k);
+				if (line[k] == line[i])
+				{
+					line[k] = line[i] * 2;
+					line[i] = line[k];
+					line[k] = 0;
+				}
 			}
 			j = i;
 			while (j != index_max)
@@ -51,21 +53,27 @@ int slide_line(int *line, size_t size, int direction)
 	{
 		for (i = 0; i <= index_max; i++)
 		{
-			j = i;
-			while (j != index_max)
-			{
-				if (line[j + 1] == 0)
-				{
-					line[j + 1] = line[j];
-					line[j] = 0;
-				}
-				j++;
-			}
 			for (k = i + 1; k <= index_max; k++)
 			{
 				if (line[k] != line[i] && line[k] != 0)
 					break;
-				shift_index(&line, i, k);
+				if (line[k] == line[i])
+				{
+					line[k] = line[i] * 2;
+					line[i] = line[k];
+					line[k] = 0;
+				}
+			}
+
+			j = i;
+			while (j != 0)
+			{
+				if (line[j - 1] == 0)
+				{
+					line[j - 1] = line[j];
+					line[j] = 0;
+				}
+				j--;
 			}
 		}
 		return (1);

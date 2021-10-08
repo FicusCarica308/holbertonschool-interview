@@ -1,4 +1,24 @@
 #include "menger.h"
+/**
+ * test - a function that draws a 2D Menger Sponge
+ * @row: row of parent caller
+ * @col: col of parent caller
+ * Return: void
+ */
+void test(int row, int col)
+{
+	while (row != 0 && col != 0)
+	{
+		if (col % 3 == 1 && row % 3 == 1)
+		{
+			printf(" ");
+			return;
+		}
+		col = col / 3;
+		row = row / 3;
+	}
+	printf("#");
+}
 
 /**
  * menger - a function that draws a 2D Menger Sponge
@@ -9,13 +29,9 @@ void menger(int level)
 	int size = 0;
 	int row = 0;
 	int col = 0;
-	int row_count = 1;
-	int col_count = 1;
-	int row_row_count = 1;
-	int col_col_count = 1;
 
 	if (level < 0)
-	return;
+		return;
 
 	/*
 	* Determines the size of the sponge
@@ -23,29 +39,12 @@ void menger(int level)
 	*/
 	size = pow(3, level);
 
-	for (row = 1; row <= size; row++)
+	for (row = 0; row <= size - 1; row++)
 	{
-		for (col = 1; col <= size; col++)
+		for (col = 0; col <= size - 1; col++)
 		{
-			if (row_row_count % 3 == 2 && col_col_count % 3 == 2)
-				putchar(' ');
-			else if (row_count % 3 == 2 && col_count % 3 == 2)
-				putchar(' ');
-			else if (row % 3 == 2  && col % 3 == 2)
-			{
-				putchar(' ');
-			} else {
-				printf("#");
-			}
-			if (col % 3 == 0)
-				col_count++;
-			if (col % 9 == 0)
-				col_col_count++;
+			test(row, col);
 		}
-		if (row % 3 == 0)
-			row_count++;
-		if (row % 9 == 0)
-			row_row_count++;
 		putchar('\n');
 	}
 }

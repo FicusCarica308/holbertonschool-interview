@@ -8,5 +8,6 @@
 
 /* PROTOTYPES */
 void menger(int level);
+void test(int row, int col);
 
 #endif

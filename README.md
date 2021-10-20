@@ -2,7 +2,7 @@
 ![alt text](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.holbertonschool.com%2Fholberton-logo-simple.png&f=1&nofb=1)
 
 # Contents:
-* This repository contains directorys named afyer given projects assigned by the holbertonschool curriculum.
+* This repository contains directorys named after given projects assigned by the holbertonschool curriculum.
 * Each one contains a single or multiple practice interview question that I was or currently tasked with solving
 
 ## Directories:

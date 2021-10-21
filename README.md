@@ -18,6 +18,7 @@ For this repository it is all interview preperation questions !
 * ![0x09-utf8_validation](https://github.com/FicusCarica308/holbertonschool-interview/tree/main/0x09-utf8_validation)
 * ![0x0A-slide_line](https://github.com/FicusCarica308/holbertonschool-interview/tree/main/0x0A-slide_line)
 * ![0x0B-menger](https://github.com/FicusCarica308/holbertonschool-interview/tree/main/0x0B-menger)
+* ![0x0C-nqueens](https://github.com/FicusCarica308/holbertonschool-interview/tree/main/0x0C-nqueens)
 
 ## Authors
 Manuel Enrique Figueroa - [Github](https://github.com/FicusCarica308), [LinkedIn](https://www.linkedin.com/in/manuel-figueroa-292216215)

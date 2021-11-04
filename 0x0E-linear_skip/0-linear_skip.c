@@ -7,6 +7,14 @@
  */
 void print_check(skiplist_t *temp_head, skiplist_t *prev_place, int type)
 {
+	skiplist_t *node = NULL;
+
+	if (type == 1 && temp_head == NULL)
+	{
+		for (node = prev_place; node->next != NULL; node = node->next);
+		printf("Value found between indexes [%ld] and [%ld]\n", prev_place->index, node->index);
+	}
+
 	if (temp_head == NULL)
 		return;
 	
@@ -44,6 +52,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 
 	if (prev_place != NULL && prev_place->next == NULL)
 		return (NULL);
+
 	print_check(temp_head, prev_place, 1);
 	temp_head = prev_place;
 	while (temp_head != NULL)

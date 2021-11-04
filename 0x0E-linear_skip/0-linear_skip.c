@@ -48,10 +48,10 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	temp_head = prev_place;
 	while (temp_head != NULL)
 	{
+		print_check(temp_head, prev_place, 0);
 		if (temp_head->n == value)
 			return (temp_head);
 		temp_head = temp_head->next;
-		print_check(temp_head, prev_place, 0);
 	}
 
 	return (NULL);

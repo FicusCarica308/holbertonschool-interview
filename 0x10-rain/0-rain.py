@@ -13,12 +13,12 @@ def rain(walls):
             prev_wall = wall
             continue
         if (wall != 0):
-            if (wall < prev_wall):
+            if (wall <= prev_wall):
                 lost_space = prev_wall - wall
                 total_water += (prev_wall - lost_space) * spaces_between
                 spaces_between = 0
                 prev_wall = wall
-            if (wall > prev_wall):
+            if (wall >= prev_wall):
                 lost_space = (prev_wall - wall) * -1
                 total_water += (wall - lost_space) * spaces_between
                 spaces_between = 0

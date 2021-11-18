@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+""" Summary """
 
 def rain(walls):
+    """ Summary """
     spaces_between = 0
     prev_wall = 0
     total_water = 0

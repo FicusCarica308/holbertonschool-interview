@@ -12,7 +12,7 @@
 
 ### Solution Files:
 * 0-heap_sort.c - contains a function defintion that acts as a solutions to the problem above
-* 0-O - Executable
+* 0-O - Big O notation of the Heap sort algorithm
 
 #### Language:
 * C

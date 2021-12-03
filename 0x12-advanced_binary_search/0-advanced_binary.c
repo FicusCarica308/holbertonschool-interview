@@ -1,7 +1,12 @@
 #include "search_algos.h"
 /**
- * 
- * 
+ * find_index - recursively finds the first index a given value occured in
+ * using the binary search method
+ * @array: Given array to search through (sorted integers)
+ * @start_index: The starting index of the array (begins at 0)
+ * @end_index: The ending index of the array
+ * @value: The value to search for
+ * Return: returns -1 on failure or index of found intger
  */
 int find_index(int *array, int start_index, int end_index, int value)
 {
@@ -31,12 +36,13 @@ int find_index(int *array, int start_index, int end_index, int value)
 }
 
 /**
- * 
- * 
+ * advanced_binary - recursively searches for a value in a sorted array of ints
+ * @array: Sorted array of integers to search through
+ * @size: The size of the array
+ * @value: The value to search for
+ * Return: returns -1 on failure or index of found intger
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (array == NULL)
-		return (-1);
 	return (find_index(array, 0, size - 1, value));
 }

@@ -3,34 +3,31 @@
  * 
  * 
  */
-int find_index(int *array, int start, int end, int size, int value)
+int find_index(int *array, int start_index, int end_index, int value)
 {
-	int i = 0;
-	int result;
-	int new_size = 0;
+	/* start_index, end_index */
+	int middle;
+	int i;
 
-	if (array[end] < value || array[start] > value)
+	if (end_index > start_index)
 	{
-		return (-1);
-	}
-	printf("Searching in array:");
-	for (i = start; i <= end; i++)
-	{
-		printf("%d", array[i]);
-		if (i != end)
+		printf("Searching in array:");
+		for (i = start_index; i <= end_index; i++)
+		{
+			printf("%d", array[i]);
+			if (i != end_index)
 			printf(", ");
+		}
+		printf("\n");
+		middle = start_index + (end_index - start_index) / 2;
+		if (array[middle] == value && array[middle - 1] != value)
+			return (middle);
+		if (array[middle] >= value)
+			return (find_index(array, start_index, middle, value));
+		if (array[middle] <= value)
+			return (find_index(array, middle + 1, end_index, value));
 	}
-	printf("\n");
-
-	if (size % 2 != 0)
-		new_size = (size / 2) + 1;
-	else
-		new_size = (size / 2);
-
-	result = find_index(array, start, new_size - 1, new_size, value); // left
-	result = find_index(array, start + new_size, end, new_size, value); // right
-
-	return (result);
+	return (-1);
 }
 
 /**
@@ -41,10 +38,5 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	if (array == NULL)
 		return (-1);
-	/* whenever the number is not found inside the array return -1 */
-
-	/* search left most first */
-	/* search right most next */
-
-	return (find_index(array, 0, size - 1, size, value));
+	return (find_index(array, 0, size - 1, value));
 }

@@ -14,7 +14,7 @@ int find_index(int *array, int start_index, int end_index, int value)
 	int middle;
 	int i;
 
-	if (end_index > start_index)
+	if (end_index >= start_index)
 	{
 		printf("Searching in array: ");
 		for (i = start_index; i <= end_index; i++)

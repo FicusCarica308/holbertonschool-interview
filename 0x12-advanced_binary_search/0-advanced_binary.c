@@ -29,8 +29,7 @@ int find_index(int *array, int start_index, int end_index, int value)
 			return (middle);
 		if (array[middle] >= value)
 			return (find_index(array, start_index, middle, value));
-		if (array[middle] <= value)
-			return (find_index(array, middle + 1, end_index, value));
+		return (find_index(array, middle + 1, end_index, value));
 	}
 	return (-1);
 }

@@ -6,7 +6,7 @@
  * @start_index: The starting index of the array (begins at 0)
  * @end_index: The ending index of the array
  * @value: The value to search for
- * Return: returns -1 on failure or index of found intger
+* Return: returns -1 on failure or index of found intger
  */
 int find_index(int *array, int start_index, int end_index, int value)
 {
@@ -14,9 +14,9 @@ int find_index(int *array, int start_index, int end_index, int value)
 	int middle;
 	int i;
 
-	if (end_index >= start_index)
+	if (end_index > start_index)
 	{
-		printf("Searching in array:");
+		printf("Searching in array: ");
 		for (i = start_index; i <= end_index; i++)
 		{
 			printf("%d", array[i]);
@@ -29,7 +29,8 @@ int find_index(int *array, int start_index, int end_index, int value)
 			return (middle);
 		if (array[middle] >= value)
 			return (find_index(array, start_index, middle, value));
-		return (find_index(array, middle + 1, end_index, value));
+		if (array[middle] <= value)
+			return (find_index(array, middle + 1, end_index, value));
 	}
 	return (-1);
 }

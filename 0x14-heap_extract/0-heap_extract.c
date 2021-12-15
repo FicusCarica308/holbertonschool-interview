@@ -21,7 +21,7 @@ int heap_extract(heap_t **root)
 	}
 	while (1 != 0)
 	{
-		hold_n = temp_head->n;
+		hold_n = tmp_head->n;
 		if (tmp_head->right == NULL || tmp_head->left->n >= tmp_head->right->n)
 		{
 			tmp_head->n = tmp_head->left->n;

@@ -25,12 +25,7 @@ typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s heap_t;
 
 /* Prototypes */
-size_t left_and_right(const binary_tree_t *tree);
-size_t binary_tree_height(const binary_tree_t *tree);
-int tree_size(heap_t *root);
-void get_last_node_path(unsigned long int n, int *binary, int current_index);
 void binary_tree_print(const binary_tree_t *);
 int heap_extract(heap_t **root);
-int free_last_node(heap_t *root);
 
 #endif

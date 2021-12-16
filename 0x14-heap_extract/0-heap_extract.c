@@ -67,7 +67,6 @@ int heap_extract(heap_t **root)
 		/* Finds and removes the last item in the binary tree */
 	print_binary(size, binary, height - 1);
 
-	printf("\n");
 	for (i = 0; i < height; i++)
 	{
 		if (binary[i] == 1)

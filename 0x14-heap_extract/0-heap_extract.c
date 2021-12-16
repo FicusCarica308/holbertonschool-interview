@@ -1,5 +1,38 @@
 #include "binary_trees.h"
 
+#include "binary_trees.h"
+/**
+ * left_and_right - loops through tree recursively left and right
+ * @tree: given tree
+ * Return: returns total height of tree
+ */
+size_t left_and_right(const binary_tree_t *tree)
+{
+	int left_height = 0;
+	int right_height = 0;
+
+	if (tree == NULL)
+		return (0);
+	left_height = left_and_right(tree->left) + 1;
+	right_height = left_and_right(tree->right) + 1;
+	if (left_height > right_height)
+		return (left_height);
+	else
+		return (right_height);
+}
+/**
+ * binary_tree_height - finds height from node
+ * @tree: given tree
+ * Return: height;
+ */
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+	else
+		return (left_and_right(tree) - 1);
+}
+
 int tree_size(heap_t *root)
 {
 	if (root == NULL)
@@ -8,19 +41,19 @@ int tree_size(heap_t *root)
 		return (tree_size(root->left) + 1 + tree_size(root->right));
 }
 
-void path_to_last_node(int tree_size, long int return_values[])
+/**
+ *print_binary - prints a decimal number as binary
+ *@n: the decimal number given
+ */
+void print_binary(unsigned long int n, int *binary, int current_index)
 {
-	long int binary_path = 0, iteration = 1, remainder;
+	unsigned long int temp = n;
 
-	while (tree_size != 0)
-	{
-		remainder = tree_size % 2;
-		binary_path = binary_path + remainder * iteration;
-		iteration = iteration * 10;
-		tree_size = tree_size / 2;
-	}
-	return_values[0] = binary_path;
-	return_values[1] = iteration / 100;
+	if (temp == 1)
+		return;
+	if (temp > 1)
+		print_binary(temp >> 1, binary, current_index - 1);
+	binary[current_index] = (temp & 1);
 }
 
 /**
@@ -30,46 +63,57 @@ void path_to_last_node(int tree_size, long int return_values[])
 */
 int heap_extract(heap_t **root)
 {
-	long int node_path_info[2], node_path, node_start_point;
+	int size = tree_size(*root);
 	heap_t *temp_head = *root;
-	(void) temp_head;
+	int height = binary_tree_height(*root);
+	int *binary = malloc(sizeof(int) * height);
+	int i;
+	int hold_n1, hold_n2;
 
-	if (root == NULL)
-		return (0);
-	
-	/* Init all variables*/
-	path_to_last_node(tree_size(*root), node_path_info);
-	node_path = node_path_info[0];
-	node_start_point = node_path_info[1];
+	/* Finds and removes the last item in the binary tree */
+	print_binary(size, binary, height - 1);
 
-	printf("path = %ld ------ starting_point = %ld\n", node_path, node_start_point);
-
-	while (node_start_point > 1)
+	printf("\n");
+	for (i = 0; i < height; i++)
 	{
-		node_path = node_path / 10;
-		if ((node_path / node_start_point) == 0)
-		{
-			temp_head = temp_head->left;
-			printf("ran1");
-		}
-		else if ((node_path / node_start_point) == 1)
-		{
+		if (binary[i] == 1)
 			temp_head = temp_head->right;
-			printf("ran2");
-		}
-		node_start_point = node_start_point / 10;
+		else if (binary[i] == 0)
+			temp_head = temp_head->left;
 	}
 
-	printf("Found node = %d", temp_head->n);
+	if (binary[i - 1] == 1)
+		temp_head->parent->right = NULL;
+	else if (binary[i - 1] == 0)
+		temp_head->parent->left = NULL;
+	hold_n1 = temp_head->n;
+	free(temp_head);
+	free(binary);
 
-	/* 
-	Find node to delete
-	save the value of that node
-	Free the node
-	
-	Move the root down to the bottom
-	once the root has reached the bottom swap the values with the saved value from delete node
-	*/
+	/* ======= */
+
+	temp_head = *root;
+
+	while (1 != 0)
+	{
+		hold_n2 = temp_head->n;
+		if (temp_head->right == NULL || temp_head->left->n >= temp_head->right->n)
+		{
+			temp_head->n = temp_head->left->n;
+			temp_head->left->n = hold_n2;
+			temp_head = temp_head->left;
+		} else if (temp_head->left == NULL || temp_head->right->n >= temp_head->left->n)
+		{
+			temp_head->n = temp_head->right->n;
+			temp_head->right->n = hold_n2;
+			temp_head = temp_head->right;
+		}
+		if (temp_head->right == NULL && temp_head->left == NULL)
+		{
+			temp_head->n = hold_n1;
+			return (hold_n2);
+		}
+	}
 
 	return (0);
 }

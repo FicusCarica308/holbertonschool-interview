@@ -98,7 +98,7 @@ int heap_extract(heap_t **root)
 	int hold_n1, hold_n2;
 
 	if (*root == NULL)
-		return(0);
+		return (0);
 
 	hold_n1 = rm_last_node(*root);
 	head = *root;

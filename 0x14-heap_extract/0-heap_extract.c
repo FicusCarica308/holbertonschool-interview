@@ -94,14 +94,24 @@ int rm_last_node(heap_t *root)
  */
 int heap_extract(heap_t **root)
 {
-	heap_t *head = *root;
+	heap_t *head = NULL;
 	int hold_n1, hold_n2;
 
-	hold_n1 = rm_last_node(*root);
+	if (*root == NULL)
+		return(0);
 
+	hold_n1 = rm_last_node(*root);
 	head = *root;
 
-	while (1 != 0)
+	if (head->right == NULL && head->left == NULL)
+	{
+		hold_n2 = head->n;
+		*root = NULL;
+		free(head);
+		return (hold_n2);
+	}
+
+	while (head->right != NULL || head->left != NULL)
 	{
 		hold_n2 = head->n;
 		if (head->right == NULL || head->left->n >= head->right->n)

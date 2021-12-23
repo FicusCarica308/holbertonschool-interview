@@ -72,15 +72,15 @@ int main(int argc, char **argv)
 		error();
 	int_1 = stoi(argv[1]);
 	int_2 = stoi(argv[2]);
-	new_num = malloc(sizeof(int *) * (strlgth(argv[1]) + strlgth(argv[2])));
+	new_num = malloc(sizeof(int) * ((strlgth(argv[1]) + strlgth(argv[2]))));
 	if (new_num == NULL)
 		error();
 
-	for (i = strlgth(argv[1]) - 1; i >= 0; i--, back_i++)
+	for (i = strlgth(argv[1]) - 1; i >= 0; i--)
 	{
 		hold_carry = 0;
 		back_j = 0;
-		for (j = strlgth(argv[2]) - 1; j >= 0; j--, back_j++)
+		for (j = strlgth(argv[2]) - 1; j >= 0; j--)
 		{
 			hold_new = int_1[i] * int_2[j] + new_num[back_i + back_j] + hold_carry;
 			hold_carry = hold_new / 10;
@@ -93,7 +93,12 @@ int main(int argc, char **argv)
 	}
 
 	for (k = strlgth(argv[1]) + strlgth(argv[2]) - 1; k >= 0; k--)
+	{
+		if (k == strlgth(argv[1]) + strlgth(argv[2]) - 1 && new_num[k] == 0)
+			continue;
 		_putchar(new_num[k] + '0');
+	}
+	_putchar('\n');
 	free(int_1);
 	free(int_2);
 	free(new_num);

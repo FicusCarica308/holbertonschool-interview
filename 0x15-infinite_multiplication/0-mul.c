@@ -70,7 +70,7 @@ int *stoi(char *string)
  */
 int main(int argc, char **argv)
 {
-	int *int_1 = NULL, *int_2 = NULL, *new_num = NULL;
+	int *int_1 = NULL, *int_2 = NULL, *new_num = NULL, lgt_1, lgt_2;
 	int hold_new, hold_carry;
 	int i, j, k;
 	int back_i = 0, back_j;
@@ -79,15 +79,16 @@ int main(int argc, char **argv)
 		error();
 	int_1 = stoi(argv[1]);
 	int_2 = stoi(argv[2]);
-	new_num = malloc(sizeof(int) * ((strlgth(argv[1]) + strlgth(argv[2]))));
+	lgt_1 = strlgth(argv[1]);
+	lgt_2 = strlgth(argv[2]);
+	new_num = malloc(sizeof(int) * (lgt_1 + lgt_2)));
 	if (new_num == NULL)
 		error();
-
-	for (i = strlgth(argv[1]) - 1; i >= 0; i--)
+	for (i = lgt_1 - 1; i >= 0; i--)
 	{
 		hold_carry = 0;
 		back_j = 0;
-		for (j = strlgth(argv[2]) - 1; j >= 0; j--)
+		for (j = lgt_2 - 1; j >= 0; j--)
 		{
 			hold_new = int_1[i] * int_2[j] + new_num[back_i + back_j] + hold_carry;
 			hold_carry = hold_new / 10;
@@ -98,10 +99,9 @@ int main(int argc, char **argv)
 			new_num[back_i + back_j] += hold_carry;
 		back_i++;
 	}
-
-	for (k = strlgth(argv[1]) + strlgth(argv[2]) - 1; k >= 0; k--)
+	for (k = lgt_1 + lgt_2 - 1; k >= 0; k--)
 	{
-		if (k == strlgth(argv[1]) + strlgth(argv[2]) - 1 && new_num[k] == 0)
+		if (k == lgt_1 + lgt_2 - 1 && new_num[k] == 0)
 			continue;
 		_putchar(new_num[k] + '0');
 	}

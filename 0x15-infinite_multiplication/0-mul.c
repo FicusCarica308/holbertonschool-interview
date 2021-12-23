@@ -42,6 +42,13 @@ int *stoi(char *string)
 	int *large_num = NULL;
 	(void) hold;
 
+	if (string[0] == '0')
+	{
+		_putchar('0');
+		_putchar('\n');
+		exit(0);
+	}
+
 	large_num = malloc(sizeof(int) * strlgth(string));
 	if (large_num == NULL)
 		error();

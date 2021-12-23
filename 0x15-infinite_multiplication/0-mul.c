@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 	int_2 = stoi(argv[2]);
 	lgt_1 = strlgth(argv[1]);
 	lgt_2 = strlgth(argv[2]);
-	new_num = malloc(sizeof(int) * (lgt_1 + lgt_2)));
+	new_num = malloc(sizeof(int) * (lgt_1 + lgt_2));
 	if (new_num == NULL)
 		error();
 	for (i = lgt_1 - 1; i >= 0; i--)

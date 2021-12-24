@@ -42,6 +42,7 @@ int *stoi(char *string)
 	int *large_num = NULL;
 	(void) hold;
 
+	/* ends program if one of given strings is a 0 */
 	if (string[0] == '0')
 	{
 		_putchar('0');

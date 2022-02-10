@@ -8,7 +8,7 @@
 */
 List *add_node_end(List **list, char *str)
 {
-
+	return;
 }
 
 /**
@@ -19,3 +19,6 @@ List *add_node_end(List **list, char *str)
  * Return: Returns new node
 */
 List *add_node_begin(List **list, char *str);
+{
+	return;
+}

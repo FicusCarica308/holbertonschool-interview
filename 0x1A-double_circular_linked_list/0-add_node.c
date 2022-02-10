@@ -46,6 +46,13 @@ List *add_node_end(List **list, char *str)
 
 	if (*list == NULL)
 		*list = new_node;
+	else
+	{
+		new_node->prev = (*list)->prev;
+		new_node->next = *list;
+		(*list)->prev = new_node;
+		new_node->prev->next = new_node;
+	}
 	return (new_node);
 }
 

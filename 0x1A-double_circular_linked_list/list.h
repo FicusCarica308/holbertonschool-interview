@@ -18,6 +18,7 @@ typedef struct List
 } List;
 
 /* prototypes */
+List *malloc_new_node(char *new_str);
 List *add_node_end(List **list, char *str);
 List *add_node_begin(List **list, char *str);
 

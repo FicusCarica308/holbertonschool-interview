@@ -3,7 +3,8 @@
 #include "list.h"
 
 /**
- * malloc_new_node
+ * malloc_new_node - mallocs a new DCLL node with a given
+ *					 string and default Next/Prev...
  * @new_str: The new string to copy into the new node
  * Return: pointer to new node, NULL on malloc failure or if new_str == NULL
 */

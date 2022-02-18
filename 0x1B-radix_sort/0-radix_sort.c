@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * find_largest_pos - finds the largest position the program will need to loop
@@ -10,13 +9,13 @@
 int find_largest_pos(int *array, size_t size)
 {
 	size_t i = 0;
-    int max = 0;
+	int max = 0;
 	int pos = 10;
 
-    for (i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
-        if (array[i] > max)
-            max = array[i];
+		if (array[i] > max)
+			max = array[i];
 	}
 
 	while (max != 0)
@@ -24,7 +23,7 @@ int find_largest_pos(int *array, size_t size)
 		max = max / 10;
 		pos = pos * 10;
 	}
-    return (pos / 10);
+	return (pos / 10);
 }
 
 /**

@@ -9,7 +9,7 @@ void print_array(const int *array, size_t size);
 int find_largest_pos(int *array, size_t size);
 int get_last_digit(int digit, int pos);
 int *find_last_digits(int *array, int pos, size_t size);
-int *count_sort(int *digit_array, int *original_array, int pos, size_t size);
+void count_sort(int *digit_array, int *original_array, int pos, size_t size);
 void radix_sort(int *array, size_t size);
 
 

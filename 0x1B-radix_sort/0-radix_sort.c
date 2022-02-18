@@ -78,7 +78,7 @@ int *find_last_digits(int *array, int pos, size_t size)
  * @original_array: This is the array we are gonna modify to be sorted
  * Return: Returns the new sorted array
  */
-int *count_sort(int *digit_array, int *original_array, int pos, size_t size)
+void count_sort(int *digit_array, int *original_array, int pos, size_t size)
 {
 	int *count_array = malloc(sizeof(int) * 9);
 	int *sorted_array = malloc(sizeof(int) * size);
@@ -86,7 +86,7 @@ int *count_sort(int *digit_array, int *original_array, int pos, size_t size)
 	int k = 0;
 
 	if (count_array == NULL || sorted_array == NULL)
-		return (NULL);
+		return;
 	for (i = 0; i < size; i++)
 		count_array[digit_array[i]] += 1;
 	for (i = 1; i < 10; i++)
@@ -104,9 +104,12 @@ int *count_sort(int *digit_array, int *original_array, int pos, size_t size)
 			}
 		}
 	for (i = 0; i < size; i++)
-		original_array[i] = sorted_array[i];
+	{
+		original_array[i] = 0;
+		original_array[i] += sorted_array[i];
+	}
+	free(sorted_array);
 	free(count_array);
-	return (sorted_array);
 }
 
 /**
@@ -118,7 +121,6 @@ int *count_sort(int *digit_array, int *original_array, int pos, size_t size)
 void radix_sort(int *array, size_t size)
 {
 	int *last_digits = NULL;
-	int *count_sorted_array = NULL;
 	int curr_pos = 1;
 	int max_pos = 0;
 
@@ -130,13 +132,12 @@ void radix_sort(int *array, size_t size)
 	while (curr_pos < max_pos)
 	{
 		last_digits = find_last_digits(array, curr_pos, size);
-		count_sorted_array = count_sort(last_digits, array, curr_pos, size);
+		count_sort(last_digits, array, curr_pos, size);
 		print_array(array, size);
 		if (curr_pos == 1)
 			curr_pos = 10;
 		else
 			curr_pos = curr_pos * 10;
+		free(last_digits);
 	}
-	free(count_sorted_array);
-	free(last_digits);
 }

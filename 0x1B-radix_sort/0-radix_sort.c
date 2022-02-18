@@ -1,4 +1,32 @@
 #include "sort.h"
+#include <stdio.h>
+
+/**
+ * find_largest_pos - finds the largest position the program will need to loop
+ * @array: the array we are using to determine the largest postion
+ * @size: the size of the array
+ * Return: returns the max position
+*/
+int find_largest_pos(int *array, size_t size)
+{
+	size_t i = 0;
+    int max = 0;
+	int pos = 10;
+
+    for (i = 0; i < size; i++)
+	{
+        if (array[i] > max)
+            max = array[i];
+	}
+
+	while (max != 0)
+	{
+		max = max / 10;
+		pos = pos * 10;
+	}
+    return (pos / 10);
+}
+
 /**
  * get_last_digit - Determines the last digit in a number from a given position
  * @digit: The digit to be processed
@@ -92,29 +120,23 @@ void radix_sort(int *array, size_t size)
 {
 	int *last_digits = NULL;
 	int *count_sorted_array = NULL;
-	int sorted_flag = 0;
-	size_t i = 0;
-	int pos = 10;
+	int curr_pos = 1;
+	int max_pos = 0;
 
 	if (size < 2)
 		return;
 
-	last_digits = find_last_digits(array, 1, size);
-	count_sorted_array = count_sort(last_digits, array, 1, size);
-	print_array(array, size);
-	while (sorted_flag == 0)
+	max_pos = find_largest_pos(array, size);
+
+	while (curr_pos < max_pos)
 	{
-		last_digits = find_last_digits(array, pos, size);
-		count_sorted_array = count_sort(last_digits, array, pos, size);
+		last_digits = find_last_digits(array, curr_pos, size);
+		count_sorted_array = count_sort(last_digits, array, curr_pos, size);
 		print_array(array, size);
-		for (i = 1; i < size; i++)
-		{
-			if (array[i - 1] > array[i])
-				continue;
-			else
-				sorted_flag = 1;
-		}
-		pos = pos * 10;
+		if (curr_pos == 1)
+			curr_pos = 10;
+		else
+			curr_pos = curr_pos * 10;
 	}
 	free(count_sorted_array);
 	free(last_digits);

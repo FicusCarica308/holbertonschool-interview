@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 /**
  * find_largest_pos - finds the largest position the program will need to loop
  * @array: the array we are using to determine the largest postion
@@ -40,12 +41,16 @@ int get_last_digit(int digit, int pos)
 
 	digit = digit % pos;
 
+	if (digit < 10 && pos >= 100)
+		return(0);
+
 	while (digit >= 10)
 	{
 		pos = pos / 10;
 		digit = digit - (digit % pos);
 		digit = digit / 10;
 	}
+
 	return (digit);
 }
 

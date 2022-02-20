@@ -42,7 +42,7 @@ int get_last_digit(int digit, int pos)
 	digit = digit % pos;
 
 	if (digit < 10 && pos >= 100)
-		return(0);
+		return (0);
 
 	while (digit >= 10)
 	{

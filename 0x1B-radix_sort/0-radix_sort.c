@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * find_largest_pos - finds the largest position the program will need to loop
  * @array: the array we are using to determine the largest postion
@@ -51,68 +50,6 @@ int get_last_digit(int digit, int pos)
 }
 
 /**
- * find_last_digits - Places the last digits of the iteration into a list
- * @array: The array of integers we are finding the last digits of
- * @pos: The position at which we want to get the number from on each number
- * @size: The size of the array
- * Return: Returns the array of single digits
- */
-int *find_last_digits(int *array, int pos, size_t size)
-{
-	size_t i = 0;
-	int *last_digits = malloc(sizeof(int) * size);
-
-	if (last_digits == NULL)
-		return (NULL);
-
-	for (i = 0; i < size; i++)
-		last_digits[i] = get_last_digit(array[i], pos);
-	return (last_digits);
-}
-
-/**
- * count_sort - performs a count_sort operation on a given array
- * @digit_array: An array of single digits found using the original_array
- * @pos: The position at which we want to get the number from on each number
- * @size: The size of the array
- * @original_array: This is the array we are gonna modify to be sorted
- * Return: Returns the new sorted array
- */
-void count_sort(int *digit_array, int *original_array, int pos, size_t size)
-{
-	int *count_array = malloc(sizeof(int) * 9);
-	int *sorted_array = malloc(sizeof(int) * size);
-	size_t i = 0;
-	int k = 0;
-
-	if (count_array == NULL || sorted_array == NULL)
-		return;
-	for (i = 0; i < size; i++)
-		count_array[digit_array[i]] += 1;
-	for (i = 1; i < 10; i++)
-		count_array[i] += count_array[i - 1];
-	for (i = 9; i > 0; i--)
-		count_array[i] = count_array[i - 1];
-	count_array[0] = 0;
-	for (i = 0; i < size; i++)
-		for (k = 0; k < 10; k++)
-		{
-			if (get_last_digit(original_array[i], pos) == k)
-			{
-				sorted_array[count_array[k]] = original_array[i];
-				count_array[k] += 1;
-			}
-		}
-	for (i = 0; i < size; i++)
-	{
-		original_array[i] = 0;
-		original_array[i] += sorted_array[i];
-	}
-	free(sorted_array);
-	free(count_array);
-}
-
-/**
  *radix_sort - performs a radix sort operation on a given array
  *@array: The array to be sorted
  *@size: The size of the array to be sorted
@@ -120,24 +57,43 @@ void count_sort(int *digit_array, int *original_array, int pos, size_t size)
  */
 void radix_sort(int *array, size_t size)
 {
-	int *last_digits = NULL;
-	int curr_pos = 1;
-	int max_pos = 0;
+	int *sorted_list = NULL;
+	int i = 0;
+	int max_sig_digit = 0, curr_sig_digit = 1;
+	size_t sorted_index = 0;
+	size_t original_index = 0;
+	(void)array;
 
 	if (size < 2)
 		return;
+	sorted_list = (int *)malloc(sizeof(int) * size);
+	max_sig_digit = find_largest_pos(array, size);
+	if (sorted_list == NULL)
+		return;
 
-	max_pos = find_largest_pos(array, size);
-
-	while (curr_pos < max_pos)
+	while (curr_sig_digit < max_sig_digit)
 	{
-		last_digits = find_last_digits(array, curr_pos, size);
-		count_sort(last_digits, array, curr_pos, size);
-		print_array(array, size);
-		if (curr_pos == 1)
-			curr_pos = 10;
+		for (sorted_index = 0; sorted_index < size; sorted_index++)
+		{
+			for (i = 0; i < 10; i++)
+			{
+				for (original_index = 0; original_index < size; original_index++)
+					/* if (array[original_index] % significant_digit == i) */
+					if (get_last_digit(array[original_index], curr_sig_digit) == i)
+					{
+						sorted_list[sorted_index] = array[original_index];
+						sorted_index++;
+					}
+			}
+		}
+		print_array(sorted_list, size);
+		for (original_index = 0; original_index < size; original_index++)
+			array[original_index] = sorted_list[original_index];
+		if (curr_sig_digit == 1)
+			curr_sig_digit = 10;
 		else
-			curr_pos = curr_pos * 10;
-		free(last_digits);
+			curr_sig_digit = curr_sig_digit * 10;
 	}
+
+	free(sorted_list);
 }

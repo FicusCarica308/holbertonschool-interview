@@ -64,7 +64,7 @@ void radix_sort(int *array, size_t size)
 	size_t original_index = 0;
 	(void)array;
 
-	if (size < 2)
+	if (size < 2 || array == NULL)
 		return;
 	sorted_list = (int *)malloc(sizeof(int) * size);
 	max_sig_digit = find_largest_pos(array, size);

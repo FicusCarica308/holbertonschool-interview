@@ -14,3 +14,20 @@ Create a function def island_perimeter(grid): that returns the perimeter of the 
     The island doesn’t have “lakes” (water inside that isn’t connected to the water surrounding the island).
 """
 
+def island_perimeter(grid):
+    """ Returns the perimeter of the island described in grid """
+    gridSize = len(grid)
+    surfaceArea = 0
+
+    for row in range(gridSize):
+        for column in range(gridSize):
+            if (grid[row][column] == 1):
+                if ((row - 1 < 0) or grid[row - 1][column] == 0):
+                    surfaceArea += 1
+                if ((row + 1 >= gridSize) or grid[row + 1][column] == 0):
+                    surfaceArea += 1
+                if ((column - 1) < 0 or grid[row][column - 1] == 0):
+                    surfaceArea += 1
+                if ((column >= gridSize) or grid[row][column + 1] == 0):
+                    surfaceArea += 1
+    return (surfaceArea)

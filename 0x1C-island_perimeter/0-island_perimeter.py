@@ -28,6 +28,6 @@ def island_perimeter(grid):
                     surfaceArea += 1
                 if ((column - 1) < 0 or grid[row][column - 1] == 0):
                     surfaceArea += 1
-                if ((column >= gridSize) or grid[row][column + 1] == 0):
+                if ((column + 1) >= gridSize or grid[row][column + 1] == 0):
                     surfaceArea += 1
     return (surfaceArea)

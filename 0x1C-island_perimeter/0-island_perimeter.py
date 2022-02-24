@@ -16,9 +16,8 @@ Create a function def island_perimeter(grid): that returns the perimeter of the 
 
 def island_perimeter(grid):
     """ Returns the perimeter of the island described in grid """
-    rowSize = len(grid[0])
-    columnSize = len(grid)
-    gridSize = len(grid)
+    rowSize = len(grid)
+    columnSize = len(grid[0])
     surfaceArea = 0
 
     for row in range(rowSize):
@@ -26,10 +25,10 @@ def island_perimeter(grid):
             if (grid[row][column] == 1):
                 if ((row - 1 < 0) or grid[row - 1][column] == 0):
                     surfaceArea += 1
-                if ((row + 1 >= gridSize) or grid[row + 1][column] == 0):
+                if ((row + 1 >= rowSize) or grid[row + 1][column] == 0):
                     surfaceArea += 1
                 if ((column - 1) < 0 or grid[row][column - 1] == 0):
                     surfaceArea += 1
-                if ((column + 1) >= gridSize or grid[row][column + 1] == 0):
+                if ((column + 1) >= columnSize or grid[row][column + 1] == 0):
                     surfaceArea += 1
     return (surfaceArea)

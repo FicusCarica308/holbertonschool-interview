@@ -24,5 +24,6 @@ typedef struct binary_tree_s avl_t;
 /* Prototypes */
 void binary_tree_print(const binary_tree_t *);
 int binary_tree_is_avl(const binary_tree_t *tree);
+binary_tree_t *binary_tree_node(const binary_tree_t *parent, int value);
 
 #endif

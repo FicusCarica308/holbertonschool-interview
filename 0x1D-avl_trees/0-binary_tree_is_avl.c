@@ -6,17 +6,13 @@
 int find_height(const binary_tree_t *node)
 {
 	if (node == NULL)
-		return -1;
-	else
-	{
-		int left_Depth = find_height(node->left);
-		int right_Depth = find_height(node->right);
+		return (-1);
+	int left_Depth = find_height(node->left);
+	int right_Depth = find_height(node->right);
 
-		if (left_Depth > right_Depth)
-			return (left_Depth + 1);
-		else
-			return (right_Depth + 1);
-	}
+	if (left_Depth > right_Depth)
+		return (left_Depth + 1);
+	return (right_Depth + 1);
 }
 
 /* process_node */
@@ -82,5 +78,5 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	binary_is_bst(tree->left, &bts_flag, -1, tree);
 	if (find_height(tree->left) != find_height(tree->right))
 		return (0);
-	return(bts_flag);
+	return (bts_flag);
 }

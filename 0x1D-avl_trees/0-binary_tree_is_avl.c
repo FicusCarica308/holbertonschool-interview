@@ -94,7 +94,7 @@ void binary_is_bst(const binary_tree_t *node,
 				   int left_or_right,
 				   const binary_tree_t *head)
 {
-	if (tree == NULL)
+	if (node == NULL)
 		return;
 	process_node(node, &*bts_flag, left_or_right, head);
 	binary_is_bst(node->left, &*bts_flag, left_or_right, head);

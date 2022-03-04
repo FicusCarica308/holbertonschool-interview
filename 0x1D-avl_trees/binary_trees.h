@@ -23,6 +23,15 @@ typedef struct binary_tree_s avl_t;
 
 /* Prototypes */
 void binary_tree_print(const binary_tree_t *);
+int find_height(const binary_tree_t *node);
+void process_node(const binary_tree_t *node,
+				  int *bts_flag,
+				  int left_or_right,
+				  const binary_tree_t *head);
+void binary_is_bst(const binary_tree_t *node,
+				   int *bts_flag,
+				   int left_or_right,
+				   const binary_tree_t *head);
 int binary_tree_is_avl(const binary_tree_t *tree);
 binary_tree_t *binary_tree_node(const binary_tree_t *parent, int value);
 

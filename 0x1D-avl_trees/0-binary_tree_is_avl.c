@@ -5,14 +5,17 @@
  */
 int find_height(const binary_tree_t *node)
 {
+	int left_depth;
+	int right_depth;
+
 	if (node == NULL)
 		return (-1);
-	int left_Depth = find_height(node->left);
-	int right_Depth = find_height(node->right);
+	left_depth = find_height(node->left);
+	right_depth = find_height(node->right);
 
-	if (left_Depth > right_Depth)
-		return (left_Depth + 1);
-	return (right_Depth + 1);
+	if (left_depth > right_depth)
+		return (left_depth + 1);
+	return (right_depth + 1);
 }
 
 /* process_node */

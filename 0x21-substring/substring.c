@@ -1,4 +1,5 @@
 #include "substring.h"
+#include <stdio.h>
 
 /**
  * find_substring - finds all the possible substrings containing
@@ -22,5 +23,9 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
     (void)words;
     (void)nb_words;
     (void)n;
+
+	printf("%c", words[1][0]);
 	return (NULL);
 }
+
+

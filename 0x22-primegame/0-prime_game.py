@@ -16,7 +16,9 @@ def isWinner(x, nums):
     """ : """
     maria_wins = 0
     ben_wins = 0
-    player_win = 'false'
+    
+    if (len(nums) == 0 or x == 0)
+        return (None)
 
     for round in range(0, x):
         round_nums = list(filter(isPrime, range(1, nums[round] + 1)))
@@ -24,6 +26,7 @@ def isWinner(x, nums):
             maria_wins += 1
         else:
             ben_wins += 1
+
     if (maria_wins == ben_wins):
         return (None)
     elif (maria_wins > ben_wins):

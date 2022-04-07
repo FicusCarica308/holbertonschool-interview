@@ -16,6 +16,9 @@ def isWinner(x, nums):
     """ : """
     maria_wins = 0
     ben_wins = 0
+    
+    if (nums == None or x == None):
+        return (None)
 
     for round in range(0, x):
         if (round < len(nums)):

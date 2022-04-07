@@ -17,7 +17,7 @@ def isWinner(x, nums):
     maria_wins = 0
     ben_wins = 0
     
-    if (len(nums) == 0 or x == 0)
+    if (len(nums) == 0 or x == 0):
         return (None)
 
     for round in range(0, x):

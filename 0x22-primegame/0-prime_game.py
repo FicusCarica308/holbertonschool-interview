@@ -18,7 +18,7 @@ def isWinner(x, nums):
     ben_wins = 0
 
     for round in range(0, x):
-        if (round < len(nums)):
+        if (round <= len(nums)):
             # removes all non-prime numbers from the round number set
             round_nums = list(filter(isPrime, range(1, nums[round] + 1)))
             if (len(round_nums) % 2 == 0):

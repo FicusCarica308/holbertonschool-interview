@@ -21,7 +21,6 @@ def isWinner(x, nums):
         if (round < len(nums)):
             # removes all non-prime numbers from the round number set 
             round_nums = list(filter(isPrime, range(1, nums[round] + 1)))
-            print(round_nums)
             if (len(round_nums) % 2 == 0):
                 maria_wins += 1
             else:
